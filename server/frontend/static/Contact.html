@@ -1,0 +1,83 @@
+<html>
+<head>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <title>Contact Us | Best Cars</title>
+  <style>
+    body { background-color: #0a0a0f; color: #e2e8f0; font-family: 'Courier New', monospace; }
+    .navbar { background-color: #111118 !important; border-bottom: 1px solid #00f0ff33; }
+    .navbar h2 { color: #00f0ff; letter-spacing: 0.1em; }
+    .nav-link { color: #94a3b8 !important; }
+    .nav-link.active, .nav-link:hover { color: #00f0ff !important; }
+    .main-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 4px; padding: 2rem; width: 85%; margin: 2rem auto; }
+    .contact-header { border-left: 3px solid #00f0ff; padding: 1.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #111118, #1e1e2e); }
+    .contact-header h1 { color: #00f0ff; }
+    .contact-header p { color: #94a3b8; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #1e1e2e; border-radius: 4px; margin-bottom: 1rem; background: #0a0a0f; }
+    .contact-item:hover { border-color: #00f0ff55; }
+    .contact-label { color: #00f0ff; font-weight: bold; min-width: 120px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-value { color: #e2e8f0; }
+    .contact-value a { color: #7c3aed; text-decoration: none; }
+    .contact-value a:hover { color: #00f0ff; }
+    h2.section { color: #7c3aed; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 1rem; }
+  </style>
+</head>
+<body>
+<div>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <h2 style="padding-right: 5%;">Best Cars</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="main-card">
+    <div class="contact-header">
+      <h1>Contact Us</h1>
+      <p>We are here to help you find your perfect vehicle. Reach out to us through any of the channels below.</p>
+    </div>
+
+    <h2 class="section">// General</h2>
+    <div class="contact-item">
+      <span class="contact-label">📍 Address</span>
+      <span class="contact-value">1234 AutoDrive Blvd, Suite 100, Chicago, IL 60601</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">📞 Phone</span>
+      <span class="contact-value"><a href="tel:+13125550100">+1 (312) 555-0100</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">✉️ Email</span>
+      <span class="contact-value"><a href="mailto:info@bestcars.com">info@bestcars.com</a></span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">🕐 Hours</span>
+      <span class="contact-value">Mon–Fri: 9:00 AM – 7:00 PM &nbsp;|&nbsp; Sat: 10:00 AM – 5:00 PM &nbsp;|&nbsp; Sun: Closed</span>
+    </div>
+
+    <h2 class="section">// Departments</h2>
+    <div class="contact-item">
+      <span class="contact-label">🚗 Sales</span>
+      <span class="contact-value"><a href="mailto:sales@bestcars.com">sales@bestcars.com</a> · +1 (312) 555-0101</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">🔧 Service</span>
+      <span class="contact-value"><a href="mailto:service@bestcars.com">service@bestcars.com</a> · +1 (312) 555-0102</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">💳 Finance</span>
+      <span class="contact-value"><a href="mailto:finance@bestcars.com">finance@bestcars.com</a> · +1 (312) 555-0103</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

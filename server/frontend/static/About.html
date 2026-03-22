@@ -1,68 +1,76 @@
 <html>
 <head>
-  <!-- Link the style sheet here -->
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <title>About Us | Best Cars</title>
+  <style>
+    body { background-color: #0a0a0f; color: #e2e8f0; font-family: 'Courier New', monospace; }
+    .navbar { background-color: #111118 !important; border-bottom: 1px solid #00f0ff33; }
+    .navbar h2 { color: #00f0ff; letter-spacing: 0.1em; }
+    .nav-link { color: #94a3b8 !important; }
+    .nav-link.active, .nav-link:hover { color: #00f0ff !important; }
+    .about-header { background: linear-gradient(135deg, #111118, #1e1e2e); border-left: 3px solid #00f0ff; padding: 2rem; margin-bottom: 2rem; }
+    .about-header h1 { color: #00f0ff; font-size: 2rem; margin-bottom: 0.5rem; }
+    .about-header p { color: #94a3b8; }
+    .team-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 4px; padding: 1.5rem; text-align: center; margin: 1rem; flex: 1; }
+    .team-card:hover { border-color: #00f0ff55; }
+    .team-card img { width: 80px; height: 80px; border-radius: 50%; border: 2px solid #00f0ff; margin-bottom: 1rem; object-fit: cover; }
+    .team-card .name { color: #00f0ff; font-weight: bold; font-size: 1.1rem; }
+    .team-card .role { color: #7c3aed; font-size: 0.85rem; margin-bottom: 0.5rem; }
+    .team-card .bio { color: #64748b; font-size: 0.85rem; }
+    .team-card .email { color: #94a3b8; font-size: 0.8rem; margin-top: 0.5rem; }
+    .main-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 4px; padding: 2rem; width: 85%; margin: 2rem auto; }
+    .team-row { display: flex; flex-direction: row; justify-content: center; flex-wrap: wrap; }
+  </style>
 </head>
+<body>
 <div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <h2 style="padding-right: 5%;">Best Cars</h2>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-          </li>
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
         </ul>
       </div>
     </div>
   </nav>
-  
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
-        </div>
-      </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
-      </div>
+  <div class="main-card">
+    <div class="about-header" name="about-header">
+      <h1>About Us</h1>
+      <p>Welcome to Best Cars dealership, home to the best cars in North America. We deal in selling domestic and imported cars at reasonable prices. Founded in 2005, we have served over 50,000 satisfied customers across the continent.</p>
+    </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
-        </div>
+    <div class="team-row">
+      <div class="team-card">
+        <img src="/static/person.png" alt="CEO">
+        <p class="name">Carlos Mendoza</p>
+        <p class="role">Chief Executive Officer</p>
+        <p class="bio">20+ years in the automotive industry. Carlos leads our vision of making premium vehicles accessible to everyone.</p>
+        <p class="email">c.mendoza@bestcars.com</p>
+      </div>
+      <div class="team-card">
+        <img src="/static/person.png" alt="Sales Director">
+        <p class="name">Sofia Restrepo</p>
+        <p class="role">Sales Director</p>
+        <p class="bio">Expert negotiator with a passion for matching customers to their perfect vehicle. 15 years of dealer experience.</p>
+        <p class="email">s.restrepo@bestcars.com</p>
+      </div>
+      <div class="team-card">
+        <img src="/static/person.png" alt="Tech Lead">
+        <p class="name">Andrés Torres</p>
+        <p class="role">Technology Lead</p>
+        <p class="bio">Built and maintains our digital platform. Keeps our systems running fast, secure and modern.</p>
+        <p class="email">a.torres@bestcars.com</p>
       </div>
     </div>
-    </div>
-    </div>
-    
+  </div>
 </div>
-
+</body>
 </html>
