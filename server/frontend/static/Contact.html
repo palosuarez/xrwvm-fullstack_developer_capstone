@@ -1,49 +1,67 @@
 <html>
 <head>
-  <link rel="stylesheet" href="/static/style.css">
-  <link rel="stylesheet" href="/static/bootstrap.min.css">
   <title>Contact Us | Best Cars</title>
   <style>
-    body { background-color: #0a0a0f; color: #e2e8f0; font-family: 'Courier New', monospace; }
-    .navbar { background-color: #111118 !important; border-bottom: 1px solid #00f0ff33; }
-    .navbar h2 { color: #00f0ff; letter-spacing: 0.1em; }
-    .nav-link { color: #94a3b8 !important; }
-    .nav-link.active, .nav-link:hover { color: #00f0ff !important; }
-    .main-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 4px; padding: 2rem; width: 85%; margin: 2rem auto; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0f; color: #e2e8f0; font-family: 'JetBrains Mono', 'Courier New', monospace; min-height: 100vh; }
+    nav { background: #111118; border-bottom: 1px solid #1e1e2e; padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .brand { color: #00f0ff; font-family: sans-serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; letter-spacing: 0.05em; }
+    .brand span { color: #7c3aed; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: #64748b; text-decoration: none; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #00f0ff; }
+    .auth-links { display: flex; gap: 1rem; align-items: center; }
+    .auth-links a { color: #64748b; text-decoration: none; font-size: 0.78rem; }
+    .auth-links a:hover { color: #00f0ff; }
+    .auth-links .username { color: #00f0ff; font-weight: 600; font-size: 0.82rem; }
+    .main-card { background: #111118; border: 1px solid #1e1e2e; border-radius: 2px; padding: 2rem; width: 85%; margin: 2rem auto; }
     .contact-header { border-left: 3px solid #00f0ff; padding: 1.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #111118, #1e1e2e); }
-    .contact-header h1 { color: #00f0ff; }
-    .contact-header p { color: #94a3b8; }
-    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #1e1e2e; border-radius: 4px; margin-bottom: 1rem; background: #0a0a0f; }
-    .contact-item:hover { border-color: #00f0ff55; }
-    .contact-label { color: #00f0ff; font-weight: bold; min-width: 120px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    .contact-value { color: #e2e8f0; }
+    .contact-header h1 { color: #00f0ff; font-size: 2rem; margin-bottom: 0.5rem; }
+    .contact-header p { color: #94a3b8; font-size: 0.9rem; }
+    .contact-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border: 1px solid #1e1e2e; border-radius: 2px; margin-bottom: 0.75rem; background: #0a0a0f; transition: border-color 0.2s; }
+    .contact-item:hover { border-color: #00f0ff44; }
+    .contact-label { color: #00f0ff; font-weight: bold; min-width: 120px; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; }
+    .contact-value { color: #e2e8f0; font-size: 0.85rem; }
     .contact-value a { color: #7c3aed; text-decoration: none; }
     .contact-value a:hover { color: #00f0ff; }
-    h2.section { color: #7c3aed; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 1rem; }
+    h2.section { color: #7c3aed; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.12em; margin: 1.5rem 0 0.75rem; }
   </style>
+  <script>
+    let checkSession = () => {
+      let curr_user = sessionStorage.getItem("username");
+      if (curr_user && curr_user !== "") {
+        document.getElementById("loginlogout").innerHTML =
+          '<span class="username">' + curr_user + '</span>' +
+          '<a href="/" onclick="logout()">Logout</a>';
+      } else {
+        document.getElementById("loginlogout").innerHTML =
+          '<a href="/login">Login</a>' +
+          '<a href="/register" style="border:1px solid #00f0ff44; padding:0.3rem 0.75rem; color:#00f0ff;">Register</a>';
+      }
+    }
+    const logout = async () => {
+      await fetch(window.location.origin + "/djangoapp/logout", { method: "GET" });
+      sessionStorage.removeItem("username");
+      window.location.href = window.location.origin;
+    }
+  </script>
 </head>
-<body>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Best Cars</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-          <li class="nav-item"><a class="nav-link active" href="/contact">Contact Us</a></li>
-        </ul>
-      </div>
+<body onload="checkSession()">
+  <nav>
+    <a class="brand" href="/">Best<span>Cars</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/contact" class="active">Contact Us</a>
+      <a href="/dealers">Dealerships</a>
     </div>
+    <div class="auth-links" id="loginlogout"></div>
   </nav>
 
   <div class="main-card">
     <div class="contact-header">
       <h1>Contact Us</h1>
-      <p>We are here to help you find your perfect vehicle. Reach out to us through any of the channels below.</p>
+      <p>We are here to help you find your perfect vehicle. Reach out through any of the channels below.</p>
     </div>
 
     <h2 class="section">// General</h2>
@@ -78,6 +96,5 @@
       <span class="contact-value"><a href="mailto:finance@bestcars.com">finance@bestcars.com</a> · +1 (312) 555-0103</span>
     </div>
   </div>
-</div>
 </body>
 </html>

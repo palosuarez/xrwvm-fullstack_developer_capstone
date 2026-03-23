@@ -1,64 +1,83 @@
 <html>
 <head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="static/style.css">
-  <link rel="stylesheet" href="static/bootstrap.min.css">
-<script>
-
-const logout = async (e) => {
-//Include the code for logout here.
-};
-
-let checkSession = ()=>{
-  let curr_user = sessionStorage.getItem("username");
-
-  if (curr_user && curr_user !== "") {
-    document.getElementById("loginlogout").innerHTML = 
-    '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
-  } else {
-    document.getElementById("loginlogout").innerHTML = 
-    '<a class="homepage_links" href="/login">Login</a>'+
-    '<a class="homepage_links"  href="/register">Register</a>'
-  }
- }
-</script>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <title>Best Cars — Dealerships</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;700&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0a0f; color: #e2e8f0; font-family: 'JetBrains Mono', monospace; min-height: 100vh;
+      background-image: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(0,240,255,0.07) 0%, transparent 60%); }
+    nav { background: #111118 !important; border-bottom: 1px solid #1e1e2e; padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .brand { color: #00f0ff; font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.05em; text-decoration: none; }
+    .brand span { color: #7c3aed; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { color: #64748b; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #00f0ff; }
+    .auth-links { display: flex; gap: 1rem; align-items: center; }
+    .auth-links a { color: #94a3b8; text-decoration: none; font-size: 0.8rem; cursor: pointer; transition: color 0.2s; }
+    .auth-links a:hover { color: #00f0ff; }
+    .auth-links .username { color: #00f0ff; font-weight: 600; }
+    .hero { padding: 4rem 2rem 2rem; max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .hero h1 .accent { color: #00f0ff; }
+    .hero p { color: #64748b; font-size: 0.9rem; line-height: 1.8; max-width: 600px; margin-bottom: 2rem; }
+    .cta-btn { display: inline-block; border: 1px solid #00f0ff; color: #00f0ff; padding: 0.75rem 2rem; text-decoration: none;
+      font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; }
+    .cta-btn:hover { background: #00f0ff; color: #0a0a0f; }
+    .stats { display: flex; gap: 2rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1e1e2e; }
+    .stat { display: flex; flex-direction: column; }
+    .stat-num { color: #00f0ff; font-size: 1.5rem; font-weight: 600; }
+    .stat-label { color: #64748b; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.25rem; }
+    .tagline { color: #7c3aed; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem; }
+  </style>
+  <script>
+    const logout = async (e) => {
+      let logout_url = window.location.origin + "/djangoapp/logout";
+      const res = await fetch(logout_url, { method: "GET" });
+      const retobj = await res.json();
+      if (retobj.userName === "") {
+        sessionStorage.removeItem("username");
+        window.location.href = window.location.origin;
+      }
+    };
+    let checkSession = () => {
+      let curr_user = sessionStorage.getItem("username");
+      if (curr_user && curr_user !== "") {
+        document.getElementById("loginlogout").innerHTML =
+          '<span class="username">' + curr_user + '</span>' +
+          '<a onclick="logout()" href="#">Logout</a>';
+      } else {
+        document.getElementById("loginlogout").innerHTML =
+          '<a href="/login">Login</a>' +
+          '<a href="/register">Register</a>';
+      }
+    }
+  </script>
 </head>
 <body onload="checkSession()">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-  <div class="container-fluid">
-    <h2 style="padding-right: 5%;">Dealerships</h2>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" style="font-size: larger;" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/about">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
-        </li>
-      </ul>
-      <span class="navbar-text">
-        <div class="loginlink" id="loginlogout">
-        </div>
-        </span>
+  <nav>
+    <a class="brand" href="/">Best<span>Cars</span></a>
+    <div class="nav-links">
+      <a href="/" class="active">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/contact">Contact Us</a>
+      <a href="/dealers">Dealerships</a>
+    </div>
+    <div class="auth-links" id="loginlogout"></div>
+  </nav>
+
+  <div class="hero">
+    <p class="tagline">// Del caos al sistema</p>
+    <h1>Find Your<br><span class="accent">Perfect Car</span></h1>
+    <p>Browse dealerships across North America. Read verified reviews from real customers and find the best deal on your next vehicle.</p>
+    <a href="/dealers" class="cta-btn">View Dealerships &rarr;</a>
+    <div class="stats">
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Dealerships</span></div>
+      <div class="stat"><span class="stat-num">15</span><span class="stat-label">Car Models</span></div>
+      <div class="stat"><span class="stat-num">5</span><span class="stat-label">Brands</span></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Verified Reviews</span></div>
     </div>
   </div>
-</nav>
-<div style="display: flex;flex-direction: column;">
-<div class="card" style="width: 50%;margin-top: 50px;align-self: center;">
-  <img src="static/car_dealership.jpg" class="card-img-top" alt="...">
-  <div class="banner">
-    <h5>Welcome to our Dealerships!</h5>
-    <a href="/dealers" class="btn" style="background-color: aqua;margin:10px">View Dealerships</a>
-  </div>
-</div>
-</div>
 </body>
 </html>
