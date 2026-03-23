@@ -1,0 +1,5 @@
+--- Prueba de Cierre de Sesión (Logout) ---
+Petición GET de logout ejecutada...
+{"userName": ""}
+
+Respuesta recibida: El userName vacío confirma que la sesión de root se ha destruido.

@@ -1,0 +1,5 @@
+--- Prueba de Inicio de Sesión Exitoso ---
+Petición POST de login ejecutada...
+{"userName": "root", "status": "Authenticated"}
+
+La respuesta 'Authenticated' confirma que root está logueado en el sistema.
