@@ -2,10 +2,18 @@ GitHub Actions Workflow Output:
 --------------------------------------------------
 Job: Lint Python Files
 Status: Success ✅
-Steps: [Checkout Code, Set up Python, Install dependencies, Run flake8]
+Steps:
+  - Checkout Code: Pass
+  - Set up Python: Pass
+  - Install dependencies: Pass
+  - Run flake8: Pass
 
 Job: Lint JavaScript Files
 Status: Success ✅
-Steps: [Checkout Code, Set up Node.js, Install dependencies, Run ESLint]
+Steps:
+  - Checkout Code: Pass
+  - Set up Node.js: Pass
+  - Install dependencies: Pass
+  - Run ESLint: Pass
 --------------------------------------------------
-Summary: All checks passed successfully.
+Summary: All checks passed successfully. All workflows completed.
